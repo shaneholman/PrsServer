@@ -21,6 +21,7 @@ namespace PrsServer.Controllers
             _context = context;
         }
 
+        //GET: /api/users/username/password
         [HttpGet("{Username}/{Password}")]
         public async Task<ActionResult<User>> LoginUser(string username, string password)
         {
