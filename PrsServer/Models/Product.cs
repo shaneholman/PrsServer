@@ -21,11 +21,11 @@ namespace PrsServer.Models
         public string Unit { get; set; } = string.Empty;
 
         [StringLength(255)]
-        public string? PhotoPath { get; set; } = null;
+        public string? PhotoPath { get; set; } = null!;
 
         public int VendorId { get; set; }
 
-        public virtual Vendor Vendor { get; set; } = null!;
+        public virtual Vendor? Vendor { get; set; } = null!;
 
     }
 }

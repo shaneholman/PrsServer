@@ -14,7 +14,7 @@ namespace PrsServer.Models
         public string Justification { get; set; } = string.Empty;
 
         [StringLength(80)]
-        public string? RejectionReason { get; set; } = null;
+        public string? RejectionReason { get; set; } = string.Empty;
 
         [StringLength(20)]
         public string DeliveryMode { get; set; } = "Pickup";
@@ -27,6 +27,8 @@ namespace PrsServer.Models
 
         public int UserId { get; set; } 
 
-        public virtual User User { get; set; } = null!;
+        public virtual User? User { get; set; } = null!;
+
+        public virtual List<RequestLine>? RequestLine { get; set; }
     }
 }
