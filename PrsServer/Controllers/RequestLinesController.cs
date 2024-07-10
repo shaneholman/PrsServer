@@ -39,7 +39,7 @@ namespace PrsServer.Controllers
                                  LineTotal = rl.Quantity * p.Price
                              }).Sum(x => x.LineTotal);
             await _context.SaveChangesAsync();
-            return Ok(request);
+            return Ok();
                             
         }
 

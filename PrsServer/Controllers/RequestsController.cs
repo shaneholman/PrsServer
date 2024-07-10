@@ -49,7 +49,7 @@ namespace PrsServer.Controllers
         }
 
         //GET api/Requests/Reviews/UserId
-        [HttpGet("Review/{id}")]
+        [HttpGet("review/{id}")]
         public async Task<ActionResult<IEnumerable<Request>>> ReviewRequest(int id){
 
             return await _context.Requests.Include(x => x.User).Where(x => x.Status == Review && x.UserId != id).ToListAsync();
@@ -70,19 +70,19 @@ namespace PrsServer.Controllers
         }
 
         //PUT: /apiRequests/review/
-        [HttpPut("Review/{id}")]
+        [HttpPut("review/{id}")]
         public async Task<IActionResult> ReviewRequest(int id, Request request)
         {
             if (request == null)
             {
                 return NotFound();
             }
-            request.Status = (request.Total <= 50) ? Approved : Review;
+            request.Status = (request.Total <= 50) ?  Approved : Review;
             return await PutRequest(id, request);
         }
 
         //PUT: /api/requests/approve
-        [HttpPut("Approve /{id}")]
+        [HttpPut("approve /{id}")]
         public async Task<IActionResult> ApproveRequest(int id, Request request)
         {
             if (request == null)
@@ -98,7 +98,7 @@ namespace PrsServer.Controllers
             return await PutRequest(id, request);
         }
         //PUT: api/Request/Reject
-        [HttpPut("Reject/{id}")]
+        [HttpPut("reject/{id}")]
         public async Task<IActionResult> RejectRequest(int id, Request request)
         {
             if (request == null)
