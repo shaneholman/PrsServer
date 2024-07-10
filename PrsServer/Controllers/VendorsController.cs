@@ -21,6 +21,24 @@ namespace PrsServer.Controllers
             _context = context;
         }
 
+
+
+        //CREATING THE PO METHOD
+        [HttpGet("po/{VendorId}")]
+        public async Task<ActionResult<PO>> CreatePo(int VendorId){
+
+            select new
+            {
+                p.Id, Product = p.Name, I.Quantity, p.Price, 
+                LineTotal = p.Price * I.Quantity
+            }
+
+            
+
+        }
+
+
+
         // GET: api/Vendors
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vendor>>> GetVendor()

@@ -17,9 +17,9 @@ namespace PrsServer.Controllers
     [ApiController]
     public class RequestsController : ControllerBase {
 
-        private const string Approved = "APPROVED";
-        private const string Review = "REVIEW";
-        private const string Reject = "REJECTED";
+         const string Approved = "APPROVED";
+         const string Review = "REVIEW";
+         const string Reject = "REJECTED";
 
         private readonly AppDbContext _context;
 
@@ -82,7 +82,7 @@ namespace PrsServer.Controllers
         }
 
         //PUT: /api/requests/approve
-        [HttpPut("approve /{id}")]
+        [HttpPut("approve/{id}")]
         public async Task<IActionResult> ApproveRequest(int id, Request request)
         {
             if (request == null)

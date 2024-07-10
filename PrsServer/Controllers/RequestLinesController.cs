@@ -23,9 +23,9 @@ namespace PrsServer.Controllers
 
 
         //RecalculateRequestTotal(requestId)
-        private async Task<IActionResult>RecalculateRequestTotal(int requestId)
+        private async Task<IActionResult>RecalculateRequestTotal(int RequestId)
         {
-            var request = await _context.Requests.FindAsync(requestId);
+            var request = await _context.Requests.FindAsync(RequestId);
 
             if (request is null)
             {
@@ -33,7 +33,7 @@ namespace PrsServer.Controllers
             }
 
             request.Total = (from rl in _context.RequestLines join p in _context.Products
-                             on rl.ProductId equals p.Id where rl.RequestId == requestId
+                             on rl.ProductId equals p.Id where rl.Id == RequestId
                              select new
                              {
                                  LineTotal = rl.Quantity * p.Price

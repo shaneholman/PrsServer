@@ -28,5 +28,7 @@ namespace PrsServer.Models
         public int UserId { get; set; } 
 
         public virtual User? User { get; set; } = null!;
+
+        public virtual RequestLine? RequestLines { get; set; }
     }
 }

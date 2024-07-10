@@ -130,9 +130,10 @@ namespace PrsServer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestId")
+                        .IsUnique();
 
-                    b.ToTable("RequestLine");
+                    b.ToTable("RequestLines");
                 });
 
             modelBuilder.Entity("PrsServer.Models.User", b =>
@@ -270,14 +271,19 @@ namespace PrsServer.Migrations
                         .IsRequired();
 
                     b.HasOne("PrsServer.Models.Request", "Request")
-                        .WithMany()
-                        .HasForeignKey("RequestId")
+                        .WithOne("RequestLines")
+                        .HasForeignKey("PrsServer.Models.RequestLine", "RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
 
                     b.Navigation("Request");
+                });
+
+            modelBuilder.Entity("PrsServer.Models.Request", b =>
+                {
+                    b.Navigation("RequestLines");
                 });
 #pragma warning restore 612, 618
         }
