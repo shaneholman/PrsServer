@@ -19,6 +19,8 @@ namespace PrsServer.Data
         public DbSet<PrsServer.Models.Product> Products { get; set; } = default!;
         public DbSet<PrsServer.Models.Request> Requests { get; set; } = default!;
         public DbSet<PrsServer.Models.RequestLine> RequestLines { get; set; } = default!;
+        public DbSet<PrsServer.Models.PO> POs { get; set; }
+        public DbSet<PrsServer.Models.POline> POLines { get; set; }
 
     }
 }

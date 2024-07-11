@@ -7,7 +7,7 @@ namespace PrsServer.Models
 
         public int RequestId { get; set; }
 
-        [JsonIgnore]
+        [JsonIgnore] //needed when you read the request it will get the virtual instance of the request only happens when you have a class with two virtual keys.
         public virtual Request? Request { get; set; }
 
         public int ProductId { get; set; }

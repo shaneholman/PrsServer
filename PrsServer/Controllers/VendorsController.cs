@@ -24,18 +24,40 @@ namespace PrsServer.Controllers
 
 
         //CREATING THE PO METHOD
-        [HttpGet("po/{VendorId}")]
-        public async Task<ActionResult<PO>> CreatePo(int VendorId){
+       /* [HttpGet("po/{VendorId}")]
+        public async Task<ActionResult<PO>> CreatePo(int VendorId) { 
+        
 
-            select new
-            {
-                p.Id, Product = p.Name, I.Quantity, p.Price, 
-                LineTotal = p.Price * I.Quantity
-            }
+            var Vendor = await _context.Vendors.FindAsync(VendorId);
 
+            //if (Vendor == null) {
+
+                //return NotFound();
             
 
-        }
+            var values = await (from p in _context.RequestLines
+                                where p.Request.Status == "APPROVED"
+                                && p.Product.VendorId == VendorId
+                                group p by p.ProductId into a select new
+                                {
+                                    Product = a.Key,
+                                    TotalSum = a.Sum(p => p.Quantity * p.Product.Price)
+                                }).ToListAsync();
+
+            List<POline> POlines = new List<POline>();
+
+            foreach (var p in values)
+            {
+                int i = 0;
+                POlines.Add(new POline { Product = p.Product, Quantity = p.TotalSum, LineTotal = p.LineTotal });
+                i++;
+            }
+            var Pototal = (from p in POlines select p.LineTotal).Sum();
+            var po = new po(Vendor, POlines, Pototal);
+
+            return(po);
+
+        }*/
 
 
 
